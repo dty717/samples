@@ -119,12 +119,11 @@ function handleSuccess(stream) {
   recordButton.disabled = false;
   console.log('getUserMedia() got stream:', stream);
   window.stream = stream;
-
   const gumVideo = document.querySelector('video#gum');
   gumVideo.srcObject = stream;
 }
 
-async function init(constraints) {
+async function initCamera(constraints) {
   try {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
@@ -145,5 +144,5 @@ document.querySelector('button#start').addEventListener('click', async () => {
     }
   };
   console.log('Using media constraints:', constraints);
-  await init(constraints);
+  await initCamera(constraints);
 });

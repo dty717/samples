@@ -1,5 +1,10 @@
 [![Build Status](https://travis-ci.org/webrtc/samples.svg?branch=gh-pages)](https://travis-ci.org/webrtc/samples/)
 
+# What I Want?(by dty717)
+
+Easy create a stream video, upload to web and then everyone can see the video.
+What I do is stupid but it deserve a failure.
+
 # WebRTC code samples
 
 This is a repository for the WebRTC JavaScript code samples. All of the samples can be tested from [webrtc.github.io/samples](https://webrtc.github.io/samples).
