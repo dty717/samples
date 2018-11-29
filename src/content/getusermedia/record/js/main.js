@@ -22,7 +22,12 @@ let sourceBuffer;
 const errorMsgElement = document.querySelector('span#errorMsg');
 const recordedVideo = document.querySelector('video#recorded');
 const recordButton = document.querySelector('button#record');
+var recordInterval;
 recordButton.addEventListener('click', () => {
+  startRecording();
+  recordInterval=setInterval(record,50000);
+   // record();
+  return;
   if (recordButton.textContent === 'Start Recording') {
     startRecording();
   } else {
@@ -32,7 +37,11 @@ recordButton.addEventListener('click', () => {
     downloadButton.disabled = false;
   }
 });
-
+function record(){
+    stopRecording();
+    startRecording();
+    //setTimeout(stopRecording,4000);
+}
 const playButton = document.querySelector('button#play');
 playButton.addEventListener('click', () => {
   play(recordedBlobs)
@@ -69,43 +78,14 @@ function handleSourceOpen(event) {
   sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
 }
 var containerBlobs=[];
-var one=false;
 
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
-    if(recordedBlobs.length<170){
-        recordedBlobs.push(event.data);
-    }else{
-        //no safe I think, but it work in chrome.
-        // containerBlobs=recordedBlobs;
-        // recordedBlobs=null;
-        // recordedBlobs=[];
-        if(ws==undefined||(ws.readyState!=1))    
-            return;
-        if(one){
-            return
-        }
-        recordedBlobs.push(event.data);
-        if(recordedBlobs.length<1600){
-             return;
-        }
-        one=true
-        const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-        setTimeout(() => {
-            play(blob)
-            
-            return;
-            ws.send('filename:'+(idVideo++)+"test.webm");
-            ws.send(blob);
-            ws.send('end');
-            containerBlobs=[];
-        }, 10);
-    }
+    recordedBlobs.push(event.data);
   }
 }
 
 function startRecording() {
-
   recordedBlobs = [];
   let options = {mimeType: 'video/webm;codecs=vp9'};
   if (!MediaRecorder.isTypeSupported(options.mimeType)) {
@@ -145,7 +125,28 @@ function startRecording() {
 }
 
 function stopRecording() {
+  
   mediaRecorder.stop();
+        //no safe I think, but it work in chrome.
+        // containerBlobs=recordedBlobs;
+        // recordedBlobs=null;
+        // recordedBlobs=[];
+    playButton.disabled = false;
+    downloadButton.disabled = false;
+  //console.log(recordedBlobs)
+  if(ws==undefined||(ws.readyState!=1))    
+      return;
+    
+  containerBlobs=recordedBlobs.slice();  
+  setTimeout(() => {
+      //play(containerBlobs)
+     // return;
+     const blob = new Blob(containerBlobs, {type: 'video/webm'});
+      ws.send('filename:'+(idVideo++)+"test.webm");
+      ws.send(blob);
+      ws.send('end');
+      containerBlobs=[];
+  }, 10);
 }
 
 function handleSuccess(stream) {
@@ -161,7 +162,7 @@ async function initCamera(constraints) {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
   } catch (e) {
-    //console.error('navigator.getUserMedia error:', e);
+    console.error('navigator.getUserMedia error:', e);
     errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
   }
 }
