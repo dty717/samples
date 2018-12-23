@@ -35,7 +35,7 @@ recordButton.addEventListener('click', () => {
 
 const playButton = document.querySelector('button#play');
 playButton.addEventListener('click', () => {
-  const superBuffer = new Blob(recordedBlobs, {type : 'audio/ogg'});
+  const superBuffer = new Blob(recordedBlobs, {type : 'audio/webm'});
   recordedAudio.src = null;
   recordedAudio.srcObject = null;
   recordedAudio.src = window.URL.createObjectURL(superBuffer);
@@ -45,12 +45,12 @@ playButton.addEventListener('click', () => {
 
 const downloadButton = document.querySelector('button#download');
 downloadButton.addEventListener('click', () => {
-  const blob = new Blob(recordedBlobs, {type : 'audio/ogg'});
+  const blob = new Blob(recordedBlobs, {type : 'audio/webm'});
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.style.display = 'none';
   a.href = url;
-  a.download = 'test.ogg';
+  a.download = 'test.webm';
   document.body.appendChild(a);
   a.click();
   setTimeout(() => {
@@ -61,7 +61,7 @@ downloadButton.addEventListener('click', () => {
 
 function handleSourceOpen(event) {
   console.log('MediaSource opened');
-  sourceBuffer = mediaSource.addSourceBuffer('audio/ogg');
+  sourceBuffer = mediaSource.addSourceBuffer('audio/webm');
   console.log('Source buffer: ', sourceBuffer);
 }
 
@@ -73,7 +73,7 @@ function handleDataAvailable(event) {
 
 function startRecording() {
   recordedBlobs = [];
-  let options = {mimeType: 'audio/ogg'};
+  let options = {mimeType: 'audio/webm'};
 
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
