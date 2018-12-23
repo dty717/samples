@@ -35,12 +35,12 @@ import java.util.*;
 public class SocketController {
     
     
-    @RequestMapping(value = { "work","workSpace" })
+    @RequestMapping(value = { "/work","/workSpace" })
     public String workHome() {
         return "workspace.html";
     }
     
-    @RequestMapping(value = { "web","Web" })
+    @RequestMapping(value = { "/web","/Web" })
     public String webHome() {
         return "webIDE.html";
     }

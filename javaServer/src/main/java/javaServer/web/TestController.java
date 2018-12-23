@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class TestController {
-    @RequestMapping(value = { "Test" })
+    @RequestMapping(value = { "/" })
     @ResponseBody
     public String getCalculateSimple() {
         //model.addAttribute("user", getPrincipal());
@@ -29,7 +29,7 @@ public class TestController {
         }catch(Exception e){
             return null;
         }
-    }    
+    }
     
     
 }
