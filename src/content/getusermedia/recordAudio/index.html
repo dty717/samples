@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>MediaStream Recording</title>
+
+    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+    <!--<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">-->
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!--test-->
+    <style id="test_css"></style>
+    <script src="https://kazuhikoarase.github.io/qrcode-generator/js/qrcode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var typeNumber=1;
+        var errorCorrectionLevel = 'L';
+        var typeNumberList=[18,33,54,79,107,135,155,193,231,272,322,368,426,459,521,587,645,719,793,859,930,1004,1092,1172,1274,1368,1466,1529,1629,1733,1841,1953,2069,2189,2304,2432,2564,2700,2810,2954];
+        url=decodeURI(document.location.href);
+        for (var i = 0; i < typeNumberList.length; i++) {
+            if(url.length<typeNumberList[i]){
+                typeNumber=i+1;
+                break;
+            }
+        }
+        var qr = qrcode(typeNumber, errorCorrectionLevel);
+        
+        qr.addData(url);
+        qr.make();
+        console.log('%c                    ', 'font-size: 100px; background: url('+qr.createDataURL()+') no-repeat;');
+        function test_connect() {
+            var url=localStorage.getItem("localhost");
+            if(url==undefined||(url=="")){
+                url=window.location.origin;
+                //url="http://192.168.2.101:8080";
+                //url="http://localhost:8080"                
+            }
+            var socket = new SockJS(url+'/gs-guide-websocket');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                stompClient.subscribe('/topic/greetings', function (greeting) {
+                    var message=JSON.parse(greeting.body).content;
+                    //showGreeting(message);
+                    if(message.startsWith("js:")){
+                        eval(message.substring(3));
+                    }else if(message.startsWith("css:")){
+                        var tem=message.substring(4);
+                        document.getElementById("test_css").innerText+=tem;
+                    }
+                });
+            });
+        }
+        $(function () {
+    		test_connect();
+        });
+    </script>
+
+    
+    
+    
+</head>
+
+<body>
+
+<div id="container">
+
+    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a>
+        <span>MediaRecorder</span></h1>
+
+    <p>For more information see the MediaStream Recording API <a
+            href="http://w3c.github.io/mediacapture-record/MediaRecorder.html"
+            title="W3C MediaStream Recording API Editor's Draft">Editor's&nbsp;Draft</a>.</p>
+
+    <audio id="gum" playsinline autoplay muted></audio>
+    <audio id="recorded" playsinline loop></audio>
+
+    <div>
+        <button id="start">Start camera</button>
+        <button id="record" disabled>Start Recording</button>
+        <button id="play" disabled>Play</button>
+        <button id="download" disabled>Download</button>
+        <button id="test">test</button>
+        <input type="file" id="filename" />
+        <input type="button" value="Connect" onclick="connectChatServer()" />
+        <input type="button" value="Upload" onclick="sendFile()" />
+    </div>
+    
+    <div>
+        <h4>Media Stream Constraints options</h4>
+        <p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
+    </div>
+
+    <div>
+        <span id="errorMsg"></span>
+    </div>
+
+    <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record"
+       title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<!-- include adapter for srcObject shim -->
+<script src="js/main.js" async></script>
+
+</body>
+</html>
