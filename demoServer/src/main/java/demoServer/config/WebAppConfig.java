@@ -6,7 +6,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration  
-@EnableWebMvc  
 public class WebAppConfig extends WebMvcConfigurerAdapter {  
 
     @Override
