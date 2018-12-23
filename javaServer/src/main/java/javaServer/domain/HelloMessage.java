@@ -1,6 +1,6 @@
 package javaServer.domain;
 
-public class HelloMessage {
+public class HelloMessage implements Serializable{
 
     private String name;
 

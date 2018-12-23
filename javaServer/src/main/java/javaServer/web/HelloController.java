@@ -39,18 +39,18 @@ public class HelloController {
     @Autowired
     private SimpMessagingTemplate template;
     
-/*    @RequestMapping("/update")
+    @RequestMapping("/update")
     @ResponseBody
     public Greeting greeting(@RequestParam("content")String content) throws Exception {
         this.template.convertAndSend("/topic/greetings", new Greeting(content));
         return new Greeting("OK!");
     }
-        
+
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
         
         return new Greeting(HtmlUtils.htmlEscape(message.getName()));
-    }*/
+    }
     
 }

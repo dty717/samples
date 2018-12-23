@@ -1,6 +1,6 @@
 package javaServer.domain;
 
-public class Greeting {
+public class Greeting implements Serializable{
 
     private String content;
 
