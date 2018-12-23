@@ -54,7 +54,6 @@
     	<mvc:mapping path="/**"
     		allowed-origins="*" />
     </mvc:cors>
-    <mvc:redirect-view-controller path="/" redirect-url="index.html"/>
 
     <mvc:resources mapping="/samples/**" location="file:/usr/web/samples/" />
     <mvc:resources mapping="/**" location="/" />
