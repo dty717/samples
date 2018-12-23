@@ -55,7 +55,7 @@ public class SocketController {
         this.template.convertAndSend("/topic/greetings", new Greeting(content));
         return new Greeting("OK!");
     }
-    @RequestMapping("/test")
+/*    @RequestMapping("/test")
     @ResponseBody
     public Greeting greeting(@RequestParam("api_key")String api_key,@RequestParam("field1")String field) throws Exception {
         //this.template.convertAndSend("/topic/greetings", new Greeting(content));
@@ -67,6 +67,6 @@ public class SocketController {
     public Greeting greeting(HelloMessage message) throws Exception {
         
         return new Greeting(HtmlUtils.htmlEscape(message.getName()));
-    }
+    }*/
     
 }
