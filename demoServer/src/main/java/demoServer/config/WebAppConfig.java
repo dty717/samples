@@ -10,7 +10,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/", "index.html");
+        //registry.addRedirectViewController("/samples/", "index.html");
     }
 
 }
