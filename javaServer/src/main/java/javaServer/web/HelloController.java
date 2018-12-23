@@ -45,13 +45,6 @@ public class HelloController {
         return "workspace.html";
     }
     
-    @RequestMapping(value = { "web","Web" })
-    public String webHome() {
-        return "webIDE.html";
-    }
-    
-
-    
     
     @RequestMapping("/update")
     @ResponseBody
