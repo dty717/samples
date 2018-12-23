@@ -65,6 +65,7 @@ downloadButton.addEventListener('click', () => {
   a.download = 'test.webm';
   document.body.appendChild(a);
   //a.click();
+  return;
   setTimeout(() => {
     document.body.removeChild(a);
     ws.send('filename:'+(idVideo++)+"test.webm");
@@ -206,6 +207,7 @@ document.querySelector('button#test').addEventListener('click', async () => {
 var ws;
 
 function connectChatServer() {
+    return;
     ws = new WebSocket(
             "ws://"+window.location.hostname+":8888/receive/fileserver");
 
@@ -229,6 +231,7 @@ function connectChatServer() {
 
 function sendFile() {
     var file = document.getElementById('filename').files[0];
+    return;
     ws.send('filename:'+file.name);
     var reader = new FileReader();
     var rawData = new ArrayBuffer();            
