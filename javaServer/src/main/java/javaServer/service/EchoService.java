@@ -1,3 +1,6 @@
+package javaServer.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import javaServer.domain.Greeting;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
