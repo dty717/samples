@@ -40,7 +40,6 @@ public class HelloController {
     @Autowired
     private SimpMessagingTemplate template;
     
-    
     @RequestMapping("/update")
     @ResponseBody
     public Greeting greeting(@RequestParam("content")String content) throws Exception {
