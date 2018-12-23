@@ -166,7 +166,9 @@ sizeLock.onchange = () => {
     video.style.width = 'auto';
   }
 };
-
+iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+if(iOS)
+    alert(stream.getTracks()[0].label)
 function getMedia(constraints) {
   if (stream) {
     stream.getTracks().forEach(track => {
