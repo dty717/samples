@@ -44,5 +44,6 @@
     <mvc:annotation-driven>
 
     </mvc:annotation-driven>
-    
+    <mvc:resources mapping="/samples/**" location="file://usr/web/samples/" />
+
 </beans>
