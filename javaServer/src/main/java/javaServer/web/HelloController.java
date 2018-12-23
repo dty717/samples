@@ -24,8 +24,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import javaServer.domain.Greeting;
 import javaServer.domain.HelloMessage;
-import javaServer.service.EchoService;
-import javaServer.service.ReceiveTcp;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
