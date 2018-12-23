@@ -67,7 +67,7 @@
         function test_connect() {
             var url=localStorage.getItem("localhost");
             if(url==undefined||(url=="")){
-                url="http://"+window.location.origin;
+                url=window.location.origin;
                 //url="http://192.168.2.101:8080";
                 //url="http://localhost:8080"                
             }
@@ -90,6 +90,7 @@
     		test_connect();
         });
     </script>
+
 
     
 </head>
