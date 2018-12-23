@@ -5,21 +5,38 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.delin.infoSystem</groupId>
-  <artifactId>javaServer</artifactId>
+  <artifactId>serverJava</artifactId>
   <version>0.0.1</version>
   <packaging>war</packaging>
-
-  <name>javaServer Maven Webapp</name>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-bom</artifactId>
+        <version>5.1.0.RELEASE</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+   
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+    </parent>
+  <name>serverJava Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
-    <org.springframework.version>[4.3.14,)</org.springframework.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <org.springframework.version>5.1.0.RELEASE</org.springframework.version>
+    <tomcat.version>8.0.1</tomcat.version>
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -33,6 +50,24 @@
      <version>4.0.0</version>
      <scope>provided</scope>
     </dependency>
+
+    <!-- mybatis datasource -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+    <dependency>
+    <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.4.6</version>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.39</version>
+    </dependency>
+    
     <!-- Shared version number properties -->
     <!-- Core utilities used by other modules.
         Define this if you use Spring Utility APIs 
@@ -74,6 +109,17 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
         <version>${org.springframework.version}</version>
     </dependency>
     <!-- Various Application Context utilities, including EhCache, JavaMail, Quartz, 
@@ -145,7 +191,7 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc-portlet</artifactId>
-        <version>${org.springframework.version}</version>
+        <version>4.0.0.RELEASE</version>
     </dependency>
     <!-- Support for testing Spring applications with tools such as JUnit and TestNG
         This artifact is generally always defined with a 'test' scope for the 
@@ -155,6 +201,94 @@
         <artifactId>spring-test</artifactId>
         <version>${org.springframework.version}</version>
         <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
+    <dependency>
+        <groupId>javax.websocket</groupId>
+        <artifactId>javax.websocket-api</artifactId>
+        <version>1.1</version>
+        <scope>provided</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket -->
+<!--<dependency>-->
+<!--    <groupId>org.springframework.boot</groupId>-->
+<!--    <artifactId>spring-boot-starter-websocket</artifactId>-->
+<!--    <version>2.0.4.RELEASE</version>-->
+<!--</dependency>-->
+
+    
+    <!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>webjars-locator-core</artifactId>
+        <version>0.35</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>sockjs-client</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>stomp-websocket</artifactId>
+        <version>2.3.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>3.3.7</version>
+    </dependency>
+    <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-websocket</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    
+    <!--integration-->
+    <dependency>
+      <groupId>org.springframework.integration</groupId>
+      <artifactId>spring-integration-ip</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.integration</groupId>
+      <artifactId>spring-integration-test</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.4</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>2.9.7</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.4</version>
     </dependency>
   </dependencies>
   
@@ -197,7 +331,7 @@
             <artifactId>tomcat7-maven-plugin</artifactId>
             <version>2.2</version>
             <configuration>
-                <port>8888</port>   <!--Configure port number-->
+                <port>8088</port>   <!--Configure port number-->
                 <path>/</path>   <!--Configure application root URL-->
             </configuration>
         </plugin>
