@@ -3,15 +3,8 @@ package web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -24,17 +17,13 @@ import org.springframework.web.util.HtmlUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
-import service.CreateNewProject;
-import service.ShowTip;
-import service.JavaParser;
-import domain.Greeting;
-import domain.HelloMessage;
+import javaServer.domain.Greeting;
+import javaServer.domain.HelloMessage;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
