@@ -1,6 +1,0 @@
-demoServer\config\WebSocketConfig.class
-demoServer\domain\Greeting.class
-demoServer\web\HelloController.class
-demoServer\web\TestController.class
-demoServer\domain\HelloMessage.class
-web\SocketController.class
