@@ -51,5 +51,6 @@
     </mvc:cors>
     
     <mvc:resources mapping="/samples/**" location="file:/usr/web/samples/" />
+    <mvc:resources mapping="/**" location="/" />
 
 </beans>
