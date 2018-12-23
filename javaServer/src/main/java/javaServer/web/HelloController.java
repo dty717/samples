@@ -24,6 +24,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import javaServer.domain.Greeting;
 import javaServer.domain.HelloMessage;
+import javaServer.service.EchoService;
+import javaServer.service.ReceiveTcp;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -34,6 +36,14 @@ import java.util.*;
 @Controller
 public class HelloController {
     
+    @Autowired
+    private EchoService echoService;
+    
+    @Autowired
+    private ReceiveTcp receiveTcp;
+
+    @Autowired
+    private SimpMessagingTemplate template;
     
     @RequestMapping(value = { "work","workSpace" })
     public String workHome() {
@@ -45,8 +55,7 @@ public class HelloController {
         return "webIDE.html";
     }
     
-    @Autowired
-    private SimpMessagingTemplate template;
+
     
     
     @RequestMapping("/update")

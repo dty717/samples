@@ -47,7 +47,8 @@
        value="org.springframework.web.servlet.view.JstlView" />
       <property name="suffix" value=".html" />
      </bean>
-
+	<bean id="echoService"
+		  class="delinInfoSystem.service.EchoService"/>
     <mvc:annotation-driven>
 
     </mvc:annotation-driven>
