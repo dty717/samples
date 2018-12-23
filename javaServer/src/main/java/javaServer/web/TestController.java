@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class TestController {
-    @RequestMapping(value = { "/" })
+    @RequestMapping(value = { "/test" })
     @ResponseBody
     public String getCalculateSimple() {
         //model.addAttribute("user", getPrincipal());
