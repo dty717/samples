@@ -1,6 +1,0 @@
-serverJava\domain\Greeting.class
-serverJava\web\HelloController.class
-serverJava\web\TestController.class
-serverJava\config\WebSocketConfig.class
-serverJava\domain\HelloMessage.class
-web\SocketController.class
