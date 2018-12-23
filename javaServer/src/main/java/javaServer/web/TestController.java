@@ -22,10 +22,10 @@ public class TestController {
     public String getCalculateSimple() {
         //model.addAttribute("user", getPrincipal());
         try{
-            return "test";
+            return "_test";
             
         }catch(Exception e){
-            return null;
+            return "null";
         }
     }
     
