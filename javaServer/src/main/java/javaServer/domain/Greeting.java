@@ -1,5 +1,7 @@
 package javaServer.domain;
 
+import java.io.Serializable;
+
 public class Greeting implements Serializable{
 
     private String content;
