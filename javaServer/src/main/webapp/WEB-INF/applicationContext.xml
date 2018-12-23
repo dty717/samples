@@ -36,7 +36,7 @@
      http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
     <!-- enable component scanning and autowire (beware that this does not enable mapper scanning!) -->
-    <context:component-scan base-package="javaServer.web,javaServer.service" />
+    <context:component-scan base-package="javaServer.web,javaServer.service,javaServer.config" />
 
     <!-- enable transactiondemarcation  with annotations -->
     <tx:annotation-driven />
