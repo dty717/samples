@@ -36,11 +36,6 @@ import java.util.*;
 @Controller
 public class HelloController {
     
-    @Autowired
-    private EchoService echoService;
-    
-    @Autowired
-    private ReceiveTcp receiveTcp;
 
     @Autowired
     private SimpMessagingTemplate template;

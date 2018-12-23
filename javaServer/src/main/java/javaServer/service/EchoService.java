@@ -14,7 +14,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 public class EchoService {
     
-    @Autowired
+/*    @Autowired
     private SimpMessagingTemplate template;
     
         
@@ -36,5 +36,5 @@ public class EchoService {
 		System.out.println("template");
 		//this.template.convertAndSend("/topic/greetings", new Greeting(text));
 		return "echo:!!!-good day:" + input;
-	}
+	}*/
 }
