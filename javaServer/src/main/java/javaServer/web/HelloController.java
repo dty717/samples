@@ -40,11 +40,6 @@ public class HelloController {
     @Autowired
     private SimpMessagingTemplate template;
     
-    @RequestMapping(value = { "work","workSpace" })
-    public String workHome() {
-        return "workspace.html";
-    }
-    
     
     @RequestMapping("/update")
     @ResponseBody
