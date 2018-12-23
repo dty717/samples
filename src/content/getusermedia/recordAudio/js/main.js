@@ -122,7 +122,7 @@ document.querySelector('button#start').addEventListener('click', async () => {
     audio: {
       echoCancellation: {exact: hasEchoCancellation}
     },
-    video: false;
+    video: false
   };
   await init(constraints);
 });
