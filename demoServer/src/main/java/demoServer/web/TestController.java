@@ -17,7 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class TestController {
-    @RequestMapping(value = { "/go_test" })
+    @RequestMapping(value = { "/a","/b" })
+    @ResponseBody
+    public String workHome() {
+        return "workspace";
+    }
+    
+    @RequestMapping(value = "/go_test")
     @ResponseBody
     public String getCalculateSimple() {
         //model.addAttribute("user", getPrincipal());

@@ -1,4 +1,4 @@
-package web;
+package demoServer.web;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +38,7 @@ public class SocketController {
     @RequestMapping(value = { "/work","/workSpace" })
     @ResponseBody
     public String workHome() {
-        return "workspace.html";
+        return "workspace";
     }
     
     @RequestMapping(value = { "/web","/Web" })
