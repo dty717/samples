@@ -36,6 +36,7 @@ public class SocketController {
     
     
     @RequestMapping(value = { "/work","/workSpace" })
+    @ResponseBody
     public String workHome() {
         return "workspace.html";
     }
