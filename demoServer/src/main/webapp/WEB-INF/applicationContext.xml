@@ -37,7 +37,12 @@
 
     <!-- enable component scanning and autowire (beware that this does not enable mapper scanning!) -->
     <context:component-scan base-package="demoServer.web,demoServer.service,demoServer.config" />
-
+    <bean id="jspViewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="suffix" value=".html"></property>
+    </bean>
+    
+    
     <!-- enable transactiondemarcation  with annotations -->
     <tx:annotation-driven />
 
