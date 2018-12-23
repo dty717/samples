@@ -207,7 +207,7 @@ var ws;
 
 function connectChatServer() {
     ws = new WebSocket(
-            "ws://localhost:8888/receive/fileserver");
+            "ws://"+window.location.hostname+":8888/receive/fileserver");
 
     ws.binaryType = "arraybuffer";
     ws.onopen = function() {
